@@ -72,6 +72,7 @@ int test_array(size_t N)
     if (sum < local_array[i])
       sum = local_array[i];
   }
+  delete [] local_array;
   return sum;
 }
 
@@ -176,7 +177,7 @@ int main()
       sum += test_static(N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M) << "\n";
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
 
     N = N * 64;
   }
@@ -198,7 +199,7 @@ int main()
       sum += test_local_iter(N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M)<< "\n";
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
 
     N = N * 64;
   }
@@ -219,7 +220,7 @@ int main()
       sum += test_local_reserve(N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M) << "\n";
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
 
     N = N * 64;
   }
@@ -240,8 +241,7 @@ int main()
       sum += test_local(N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M) << "\n";
-
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
     N = N * 64;
   }
 
@@ -264,7 +264,7 @@ int main()
       sum += test_array_pre_allocated(bigarray,N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M) << "\n";
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
 
     N = N * 64;
   }
@@ -273,9 +273,10 @@ int main()
   cout<<"TEST_LOCAL_ARRAY"<<endl;
   for (unsigned idx = 0; idx < 5; idx++)
   {
-    const size_t M = NM / N;
+    const int NM_new=32*512*1024;
+    const size_t M = NM_new/ N;
     int sum = 0;
-    int *bigarray=new int[N];
+    
     // Example: local vector - on stack
     
     time.start();
@@ -285,9 +286,9 @@ int main()
       sum += test_array(N);
     }
     double t = (double)time.stop();
-    std::cerr << t/(2*N*M) << "\n";
+    std::cerr << t/(2*N*M) << " " << N<<"\n";
 
-    N = N * 64;
+    N = N * 64 ;
   }
   return 0;
 }
