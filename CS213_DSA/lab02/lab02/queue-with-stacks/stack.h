@@ -24,7 +24,7 @@ class Stack {
 public:
     Stack(){
         top=-1;
-        this->size=100;
+        this->size=100000;
         this->arr=new T[this->size];
     }
     ~Stack(){
@@ -32,7 +32,7 @@ public:
     }
     void push(T value){
         if(getSize()==capacity){
-            cout<<" Space full "<<endl;
+            throw "Full";
         }
         else{
             this->arr[++top]=value;
