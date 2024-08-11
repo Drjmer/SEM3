@@ -18,7 +18,7 @@ void spill(Stack<T> first_stack, Stack<T> second_stack)
 {
     while (first_stack.getSize() == 0)
     {
-        second_stack.push(first_stack.top());
+        second_stack.push(first_stack.peek());
         first_stack.pop();
     }
 }
@@ -29,42 +29,54 @@ class Queue
     class Stack<T> second_stack;
 
 public:
-    Queue() {}
-    ~Queue()
-    {
-        delete first_stack;
-        delete second_stack;
-    }
-    void enqueue(T value)
-    {
-        first_stack.push(value);
-    }
-    T dequeue()
-    {
-        if(second_stack.isEmpty()){
-        spill(first_stack,second_stack);
-        return second_stack.pop();}
-        else {
-            second_stack.pop();
-        }
-    }
-    T peek(){
-        if(first_stack.getSize()!=0)
-        return first_stack.top();
-        else
-        {
-            spill(second_stack,first_stack);
-            T ans=first_stack.top();
-            return ans;
-        }
-    }
-    bool isEmpty(){
-        if(first_stack.getSize()==0&&second_stack.getSize()==0) return true;
-        else return false;
-    }
-    size_t getSize(){
-        return first_stack.getSize()+second_stack.getSize();
-    }
+    Queue();
+    ~Queue();
+    void enqueue(T value);
+    T dequeue();
+    T peek();
+    bool isEmpty();
+    size_t getSize();
 };
 
 // ENTER YOUR IMPLEMENTATIONS OF METHODS BELOW
+template<typename T>
+Queue<T>::Queue(){}
+
+template<typename T>
+Queue<T>::~Queue(){
+    first_stack.~Stack();
+    second_stack.~Stack();
+}
+
+template< typename T>
+void Queue<T>::enqueue(T value){
+    first_stack.push(value);
+}
+
+template<typename T>
+T Queue<T>::dequeue(){
+    spill(first_stack,second_stack);
+    return second_stack.pop();
+}
+
+template<typename T>
+T Queue<T>::peek(){
+    if(!first_stack.isEmpty())
+    {
+        return first_stack.peek();
+    }
+    else{
+        spill(second_stack,first_stack);
+        return first_stack.peek();
+    }
+}
+
+template <typename T>
+size_t Queue<T>::getSize(){
+    return first_stack.getSize()+second_stack.getSize();
+}
+
+template<typename T>
+bool Queue<T>::isEmpty(){
+    return getSize()==0?true:false;
+}

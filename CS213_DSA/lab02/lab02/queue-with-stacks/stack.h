@@ -22,42 +22,51 @@ class Stack {
     int capacity;
     // DO NOT CHANGE THE METHOD SIGNATURES BELOW
 public:
-    Stack(){
-        top=-1;
-        this->size=100000;
-        this->arr=new T[this->size];
-    }
-    ~Stack(){
-        delete [] this->arr;
-    }
-    void push(T value){
-        if(getSize()==capacity){
-            throw "Full";
-        }
-        else{
-            this->arr[++top]=value;
-        }
-    }
-    T pop(){
-        if(getSize()==0){
-            throw "Empty";
-        }
-        else{
-            T ans=this->arr[top];
-            top--;
-            return ans;
-        }
-    }
-    T peek(){
-        return this->arr[top];
-    }
-    bool isEmpty(){
-        return top==-1;
-    }
-    size_t getSize(){
-        return top+1;
-    }
+    Stack();
+    ~Stack();
+    void push(T value);
+    T pop();
+    T peek();
+    bool isEmpty();
+    size_t getSize();
 };
 
 // ENTER YOUR IMPLEMENTATIONS OF METHODS BELOW
+template <typename T>
+Stack<T>::Stack(){
+    this->capacity=100000000;
+    this->arr=new T[this->capacity];
+    this->top=-1;
+}
+template<typename T>
+T Stack<T>::peek(){
+    return this->arr[top];
+}
+template<typename T>
+void Stack<T>::push(T value){
+    this->arr[++top]=value;
+}
 
+template<typename T>
+bool Stack<T>::isEmpty(){
+    return top==-1;
+}
+
+template<typename T>
+T Stack<T>:: pop()
+{
+    T ans=this->arr[top];
+    top--;
+    return ans;
+}
+
+template<typename T>
+Stack<T>::~Stack(){
+    delete [] this->arr;
+
+}
+
+template<typename T>
+size_t Stack<T>:: getSize(){
+    return top+1;
+}
