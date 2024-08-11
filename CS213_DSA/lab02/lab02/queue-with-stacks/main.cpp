@@ -51,13 +51,13 @@ bool checkTestcaseStack(std::vector<std::pair<int, std::string>> testcase,
                 stl_stack.pop();
 
                 if (result != expected_value) {
-                    std::cout << "Testcase failed: Expected " << expected_value << 
+                    std::cout << "Testcase failed: Expected f1" << expected_value << 
                         " but got " << result << std::endl;
                     return false;
                 }
             } 
             catch (std::invalid_argument &e) {
-                std::cout << "Testcase failed: Expected " << stl_stack.top() << 
+                std::cout << "Testcase failed: Expected f2" << stl_stack.top() << 
                     " but got exception" << std::endl;
                 return false;
             }
@@ -72,13 +72,13 @@ bool checkTestcaseStack(std::vector<std::pair<int, std::string>> testcase,
                 int expected_value = stl_stack.top();
 
                 if (result != expected_value) {
-                    std::cout << "Testcase failed: Expected " << expected_value << 
+                    std::cout << "Testcase failed: Expected f3" << expected_value << 
                         " but got " << result << std::endl;
                     return false;
                 }
             } 
             catch (std::invalid_argument &e) {
-                std::cout << "Testcase failed: Expected " << stl_stack.top() << 
+                std::cout << "Testcase failed: Expected f4" << stl_stack.top() << 
                     " but got exception" << std::endl;
                 return false;
             }
@@ -90,7 +90,7 @@ bool checkTestcaseStack(std::vector<std::pair<int, std::string>> testcase,
             duration += std::chrono::duration_cast<std::chrono::nanoseconds>(
                     stop - start).count();
             if (result != stl_stack.empty()) {
-                std::cout << "Testcase failed: Expected " << stl_stack.empty() << 
+                std::cout << "Testcase failed: Expected f5" << stl_stack.empty() << 
                     " but got " << result << std::endl;
                 return false;
             }
@@ -134,13 +134,13 @@ bool checkTestcaseQueue(std::vector<std::pair<int, std::string>> testcase,
                 stl_queue.pop();
 
                 if (result != expected_value) {
-                    std::cout << "Testcase failed: Expected " << expected_value << 
+                    std::cout << "Testcase failed: Expected f6" << expected_value << 
                         " but got " << result << std::endl;
                     return false;
                 }
             } 
             catch (std::invalid_argument &e) {
-                std::cout << "Testcase failed: Expected " << stl_queue.front() << 
+                std::cout << "Testcase failed: Expected f7" << stl_queue.front() << 
                     " but got exception" <<  std::endl;
                 return false;
             }
@@ -155,13 +155,13 @@ bool checkTestcaseQueue(std::vector<std::pair<int, std::string>> testcase,
                 int expected_value = stl_queue.front();
 
                 if (result != expected_value) {
-                    std::cout << "Testcase failed: Expected " << expected_value << 
+                    std::cout << "Testcase failed: Expected f8" << expected_value << 
                         " but got " << result << std::endl;
                     return false;
                 }
             } 
             catch (std::invalid_argument &e) {
-                std::cout << "Testcase failed: Expected " << stl_queue.front() << 
+                std::cout << "Testcase failed: Expected f9" << stl_queue.front() << 
                     " but got exception" << std::endl;
                 return false;
             }
@@ -173,7 +173,7 @@ bool checkTestcaseQueue(std::vector<std::pair<int, std::string>> testcase,
             duration += std::chrono::duration_cast<std::chrono::nanoseconds>(
                     stop - start).count();
             if (result != stl_queue.empty()) {
-                std::cout << "Testcase failed: Expected " << stl_queue.empty() << 
+                std::cout << "Testcase failed: Expected f10" << stl_queue.empty() << 
                     " but got " << result << std::endl;
                 return false;
             }
@@ -185,7 +185,7 @@ bool checkTestcaseQueue(std::vector<std::pair<int, std::string>> testcase,
             duration += std::chrono::duration_cast<std::chrono::nanoseconds>(
                     stop - start).count();
             if (result != stl_queue.size()) {
-                std::cout << "Testcase failed: Expected " << stl_queue.size() << 
+                std::cout << "Testcase failed: Expected f11" << stl_queue.size() << 
                     " but got " << result << std::endl;
                 return false;
             }
