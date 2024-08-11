@@ -9,14 +9,14 @@ template <typename T> bool DynamicQueue<T> :: isEmpty() {
 }
 
 template <typename T> bool DynamicQueue<T> :: isFull() {
-  return size()==N-1; // dummy return
+  return tail==-1; // dummy return
 }
 
 template <typename T> void DynamicQueue<T> :: grow() {
   T inital_size=size();
   N=nextSize();
   T* tmp=new T[N];
-  for(int i=head;i<inital_size+1+head;i++)
+  for(int i=0;i<inital_size+1;i++)
   {
     tmp[i]=A[(i+head)%inital_size];
   }
@@ -39,6 +39,7 @@ template <typename T> void DynamicQueue<T> :: QInsert(T x) {
   else{
     A[tail]=x;
     tail=(tail+1)%N;
+    if(tail==head) tail=-1;
   }
 }
 
@@ -48,6 +49,7 @@ template <typename T> bool DynamicQueue<T> :: QDelete(T* x) {
   }
   x=A+head;
   head=(head+1+N)%N;
+  if(tail==-1) tail=(head-1+N)%N;
   if(head==tail) head=tail=0;
   return true; // dummy return
 }
