@@ -40,6 +40,7 @@ Stack<T>::Stack(){
 }
 template<typename T>
 T Stack<T>::peek(){
+    if(top!=-1)
     return this->arr[top];
 }
 template<typename T>

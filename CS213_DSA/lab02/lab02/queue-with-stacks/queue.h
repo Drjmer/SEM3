@@ -14,12 +14,11 @@
  */
 
 template <typename T>
-void spill(Stack<T> first_stack, Stack<T> second_stack)
+void spill(Stack<T> &first_stack, Stack<T> &second_stack)
 {
-    while (first_stack.getSize() == 0)
+    while (first_stack.getSize() != 0)
     {
-        second_stack.push(first_stack.peek());
-        first_stack.pop();
+        second_stack.push(first_stack.pop());
     }
 }
 template <typename T>
@@ -55,19 +54,25 @@ void Queue<T>::enqueue(T value){
 
 template<typename T>
 T Queue<T>::dequeue(){
-    spill(first_stack,second_stack);
-    return second_stack.pop();
+    if(second_stack.isEmpty())
+    {
+        spill(first_stack,second_stack);
+        return second_stack.pop();
+    }
+    else{
+        return second_stack.pop();
+    }
 }
 
 template<typename T>
 T Queue<T>::peek(){
-    if(!first_stack.isEmpty())
+    if(second_stack.isEmpty())
     {
-        return first_stack.peek();
+        spill(first_stack,second_stack);
+        return second_stack.peek();
     }
     else{
-        spill(second_stack,first_stack);
-        return first_stack.peek();
+        return second_stack.peek();
     }
 }
 
