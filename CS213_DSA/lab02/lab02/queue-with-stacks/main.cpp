@@ -198,6 +198,7 @@ bool checkTestcaseQueue(std::vector<std::pair<int, std::string>> testcase,
 }
 
 std::vector<std::pair<int, std::string>> generateTestcaseQueue(int num_operations) {
+       
     std::vector<std::pair<int, std::string>> testcase;
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -277,6 +278,7 @@ std::vector<std::pair<int, std::string>> generateTestcaseStack(int num_operation
                 testcase.push_back({0, "GETSIZE"});
                 break;
         }
+        
     }
     return testcase;
 }
@@ -303,6 +305,7 @@ int main(void) {
         {6, "ENQUEUE"}, {1, "DEQUEUE"}, {2, "DEQUEUE"}, {3, "DEQUEUE"}, 
         {4, "DEQUEUE"}, {5, "DEQUEUE"}, {0, "ISEMPTY"}, {0, "GETSIZE"}};
     num_correct += checkTestcaseQueue(TESTCASE, 1);
+    
     TESTCASE = generateTestcaseQueue(1000);
     num_correct += checkTestcaseQueue(TESTCASE, 2);
     TESTCASE = generateTestcaseQueue(10000);

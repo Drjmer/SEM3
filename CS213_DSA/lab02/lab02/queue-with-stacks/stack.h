@@ -40,8 +40,16 @@ Stack<T>::Stack(){
 }
 template<typename T>
 T Stack<T>::peek(){
+    try{
     if(top!=-1)
     return this->arr[top];
+    else 
+    throw "Empty";
+    }
+    catch(string s){
+    cout<<s<<endl;
+    }
+
 }
 template<typename T>
 void Stack<T>::push(T value){
@@ -56,9 +64,18 @@ bool Stack<T>::isEmpty(){
 template<typename T>
 T Stack<T>:: pop()
 {
+    try{
+    if(top==-1) throw "Empty";
+    else{
     T ans=this->arr[top];
     top--;
     return ans;
+    }
+    }
+    catch (string s)
+    {
+        cout<<s<<endl;
+    }
 }
 
 template<typename T>

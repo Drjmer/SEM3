@@ -42,10 +42,7 @@ template<typename T>
 Queue<T>::Queue(){}
 
 template<typename T>
-Queue<T>::~Queue(){
-    first_stack.~Stack();
-    second_stack.~Stack();
-}
+Queue<T>::~Queue(){}
 
 template< typename T>
 void Queue<T>::enqueue(T value){
@@ -54,6 +51,8 @@ void Queue<T>::enqueue(T value){
 
 template<typename T>
 T Queue<T>::dequeue(){
+    try{
+    if(getSize()==0) throw "Empty";
     if(second_stack.isEmpty())
     {
         spill(first_stack,second_stack);
@@ -62,6 +61,12 @@ T Queue<T>::dequeue(){
     else{
         return second_stack.pop();
     }
+
+    }
+    catch(string s){
+        cout<<s<<endl;
+    }
+
 }
 
 template<typename T>
