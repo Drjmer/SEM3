@@ -20,7 +20,7 @@ int main()
   std::cout << "0 0\n"; // Dumping dummy data such that
   vector<int> arr;
   int size = arr.capacity();
-  cout << size << endl;
+  
   ClockCounter time;
   for (int i = 0; i < 1088; i++)
   {
