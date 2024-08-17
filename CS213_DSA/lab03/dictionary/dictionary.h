@@ -84,12 +84,14 @@
 #define DICTIONARY_H
 
 // Can change this value for debugging
-int DICT_SIZE = 64;
+#define DICT_SIZE 64
 
 struct Entry {
   // define suitable fields here
-  char* key;
+  char* key=NULL; //array of chars
   int value;
+  int cnt=0;
+  int flag=0;
 };
 
 class Dictionary {

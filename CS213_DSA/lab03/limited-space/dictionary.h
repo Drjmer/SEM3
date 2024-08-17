@@ -84,7 +84,7 @@
 #define DICTIONARY_H
 
 // Can change this value for debugging
-int DICT_SIZE = 64;
+#define DICT_SIZE  64
 
 struct Entry {
   // define suitable fields here
