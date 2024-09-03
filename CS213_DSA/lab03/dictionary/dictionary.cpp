@@ -21,7 +21,7 @@ int Dictionary::hashValue(char key[])
     // compute hash
 
     // using polynomial accumulation
-    long long int p = 33;
+    long long int p = 41;
     double A1 = (sqrt(5)-1)/2.0;
     long long int powers=1;
 
